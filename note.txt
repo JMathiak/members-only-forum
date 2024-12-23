@@ -1,0 +1,17 @@
+Databases:
+Users:
+- user ID - Auto increment
+-first name
+-last name
+-username
+-email
+-password
+-membership status
+-admin
+
+Messages:
+-mID - auto incrememnt
+-title
+-Message
+-time stamp
+-author ID
