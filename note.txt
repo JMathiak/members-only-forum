@@ -6,7 +6,7 @@ Users:
 -username
 -email
 -password
--membership status
+-membership status -> base, member
 -admin
 
 Messages:
