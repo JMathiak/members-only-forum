@@ -1,0 +1,24 @@
+<html>
+
+    <head>
+        <title>Sign Up Form</title>
+    </head>
+    <body>
+        <h1>Sign Up Form</h1>
+        <form action="signup" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username" required/>
+            <label for="password">Password (Minimum 8 characters) </label>
+            <input type="password" name="password" id="password" minlength="8" required/>
+            <label for="conf_password">Confirm Password</label>
+            <input type="password" name="conf_password" id="conf_password" required/>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email Address" required/>
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" required/>
+            <label for="last_name">Last name</label>
+            <input type="text" name="last_name" id="last_name" placeholder="Last Name" required />
+            <button>Register</button>
+        </form>
+    </body>
+</html>
