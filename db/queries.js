@@ -8,6 +8,13 @@ async function getUsernameMatches(username) {
   return rows;
 }
 
+async function getUserById(id) {
+  const { rows } = await pool.query(`SELECT * FROM users where UserID = ($1)`, [
+    id,
+  ]);
+  return rows;
+}
+
 async function getEmailMatches(email) {
   const { rows } = await pool.query(`SELECT * FROM users WHERE email = ($1)`, [
     email,
@@ -15,7 +22,16 @@ async function getEmailMatches(email) {
   return rows;
 }
 
+async function createUser(username, password, email, firstName, lastName) {
+  let boolFalse = false;
+  await pool.query(
+    `INSERT INTO users (Email, Username, Password, FirstName, LastName, Membership, Admin) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+    [email, username, password, firstName, lastName, boolFalse, boolFalse]
+  );
+}
 module.exports = {
   getUsernameMatches,
+  getUserById,
   getEmailMatches,
+  createUser,
 };

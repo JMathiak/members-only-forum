@@ -3,7 +3,7 @@ const userRouter = Router();
 const userController = require("../controllers/userController.js");
 const { body } = require("express-validator");
 const db = require("../db/queries");
-
+const passport = require("passport");
 //ADD UNIQUE USER EMAIL EVENTUALLY 1/30 1:45am
 const validateSignup = [
   body("username")
@@ -48,4 +48,14 @@ userRouter.get("/signup", (req, res) => {
 });
 userRouter.post("/signup", [validateSignup], userController.createUser);
 
+userRouter.get("/login", (req, res) => {
+  res.render("logInForm");
+});
+userRouter.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+  })
+);
 module.exports = userRouter;
