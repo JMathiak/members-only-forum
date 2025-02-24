@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Member Initiation</title>
+    </head>
+    <body>
+        <h1><%= user.username %>'s Initiation Ceremony</h1>
+        <h2>Enter The Secret Code To Become a Member</h2>
+        <form action="initiate" method="POST">
+            <label for="secretCode">Are all dogs good boys and girls?</label>
+            <input type="text" name="secretCode" id="secretCode">
+            <button>Submit</button>
+        </form>
+    </body>
+</html>

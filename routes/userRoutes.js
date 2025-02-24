@@ -49,13 +49,28 @@ userRouter.get("/signup", (req, res) => {
 userRouter.post("/signup", [validateSignup], userController.createUser);
 
 userRouter.get("/login", (req, res) => {
-  res.render("logInForm");
+  res.render("logInForm", { mesg: req.session.messages });
 });
 userRouter.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/user/login",
+    failureMessage: true,
   })
 );
+
+userRouter.get("/log-out", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
+userRouter.get("/initiate", (req, res) => {
+  res.render("initiate", { user: req.user });
+});
+userRouter.post("/initiate", userController.initiateMember);
 module.exports = userRouter;

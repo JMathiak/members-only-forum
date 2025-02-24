@@ -29,9 +29,17 @@ async function createUser(username, password, email, firstName, lastName) {
     [email, username, password, firstName, lastName, boolFalse, boolFalse]
   );
 }
+
+async function giveUserMembership(userID) {
+  await pool.query(`UPDATE users SET membership = ($2) WHERE userid = ($1)`, [
+    userID,
+    true,
+  ]);
+}
 module.exports = {
   getUsernameMatches,
   getUserById,
   getEmailMatches,
   createUser,
+  giveUserMembership,
 };

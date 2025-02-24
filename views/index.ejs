@@ -4,12 +4,17 @@
     </head>
 
     <body>
+        
         <% if (locals.user) {%>
             <h1>WELCOME BACK <%= user.username %></h1>
-            <a href="/log-out">LOG OUT</a>
+            <a href="/user/initiate">Join The Club</a>
+            <a href="/user/log-out">LOG OUT</a>
           <% } %>
         <h1>Hello, this is home</h1>
         <a href="/user/signup">Sign Up</a>
         <a href="/user/login">Log in</a>
+        <a href="/messages">Messages</a>
+
+     
     </body>
 </html>

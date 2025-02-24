@@ -25,10 +25,21 @@ async function userLogIn(req, res) {
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/",
+    failureMessage: true,
   });
 }
 
+async function initiateMember(req, res) {
+  console.log(req.body.secretCode, req.user);
+  if (req.body.secretCode.toLowerCase() == "yes") {
+    db.giveUserMembership(req.user.userid);
+    res.redirect("/");
+  } else {
+    res.redirect("/user/initiate");
+  }
+}
 module.exports = {
   createUser,
   userLogIn,
+  initiateMember,
 };

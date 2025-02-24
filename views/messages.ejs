@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <Title>Messages</Title> 
+    </head>
+    <body>
+        <div>
+            <h1>Title of Comment</h1>
+            <span>Hello this is a message</span>
+            <span>Author:<% if (locals.user) {%> 
+            Josh
+                <% }else{ %> Anonymous <% } %></span>
+        </div>
+    </body>
+</html>
