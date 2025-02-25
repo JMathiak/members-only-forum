@@ -4,9 +4,21 @@
     </head>
     <body>
         <div>
+            <h1>Post a message!</h1>
+            <% if(locals.membershipStatus) {%> 
+                <form action="/messages/create" method="POST">
+                    <textarea name="message" id="message" cols="50" rows="4"></textarea><br>
+                    <button>Post Message</button>
+                </form>
+                <% }else{ %> 
+                    <span>Please Become a Member to Post Messages</span>
+                    <% } %>
+        </div>
+
+        <div>
             <h1>Title of Comment</h1>
             <span>Hello this is a message</span>
-            <span>Author:<% if (locals.user) {%> 
+            <span>Author:<% if (locals.membershipStatus) {%> 
             Josh
                 <% }else{ %> Anonymous <% } %></span>
         </div>
