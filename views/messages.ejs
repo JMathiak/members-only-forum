@@ -7,7 +7,9 @@
             <h1>Post a message!</h1>
             <% if(locals.membershipStatus) {%> 
                 <form action="/messages/create" method="POST">
-                    <textarea name="message" id="message" cols="50" rows="4"></textarea><br>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title" maxlength="30"> <br>
+                    <textarea name="message" id="message" cols="50" rows="6" maxlength="255"></textarea><br>
                     <button>Post Message</button>
                 </form>
                 <% }else{ %> 
@@ -21,6 +23,19 @@
             <span>Author:<% if (locals.membershipStatus) {%> 
             Josh
                 <% }else{ %> Anonymous <% } %></span>
+        </div>
+
+        <div>
+                <% if(messages.length > 0){ %> 
+                <% messages.forEach((message) => {%> 
+                    <h1> <%- message.title %></h1>
+                    <span> <%- message.message %></span>
+                    <span>Author:<% if (locals.membershipStatus) {%> 
+                        <%- message.authorusername %>
+                            <% }else{ %> Anonymous <% } %></span>
+                    <span><%- message.dateposted %></span>
+                <% }) %>
+                <% } %>
         </div>
     </body>
 </html>

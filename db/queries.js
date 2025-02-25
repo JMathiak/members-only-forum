@@ -36,10 +36,24 @@ async function giveUserMembership(userID) {
     true,
   ]);
 }
+
+async function createMessage(title, message, authorid, authorUser) {
+  await pool.query(
+    `INSERT INTO messages (title, message, authorid, authorusername) VALUES ($1, $2, $3, $4)`,
+    [title, message, authorid, authorUser]
+  );
+}
+
+async function getMessages() {
+  const { rows } = await pool.query(`SELECT * FROM messages`);
+  return rows;
+}
 module.exports = {
   getUsernameMatches,
   getUserById,
   getEmailMatches,
   createUser,
   giveUserMembership,
+  createMessage,
+  getMessages,
 };
