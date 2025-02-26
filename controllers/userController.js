@@ -38,8 +38,18 @@ async function initiateMember(req, res) {
     res.redirect("/user/initiate");
   }
 }
+
+async function initiateAdmin(req, res) {
+  if (req.body.secretCode.toLowerCase() == "yes") {
+    db.giveUserAdmin(req.user.userid);
+    res.redirect("/");
+  } else {
+    res.redirect("/user/adminInitiate");
+  }
+}
 module.exports = {
   createUser,
   userLogIn,
   initiateMember,
+  initiateAdmin,
 };

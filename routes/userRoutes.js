@@ -73,4 +73,10 @@ userRouter.get("/initiate", (req, res) => {
   res.render("initiate", { user: req.user });
 });
 userRouter.post("/initiate", userController.initiateMember);
+
+userRouter.get("/adminInitiate", (req, res) => {
+  res.render("adminInitiate", { user: req.user });
+});
+userRouter.post("/adminInitiate", userController.initiateAdmin);
+
 module.exports = userRouter;

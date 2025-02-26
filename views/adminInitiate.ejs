@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Admin Initiation</title>
+    </head>
+    <body>
+        <h1><%= user.username %>'s Admin Test</h1>
+        <h2>Enter The Secret Code To Become an Admin</h2>
+        <form action="admininitiate" method="POST">
+            <label for="secretCode">Are all cats good boys and girls?</label>
+            <input type="text" name="secretCode" id="secretCode">
+            <button>Submit</button>
+        </form>
+    </body>
+</html>

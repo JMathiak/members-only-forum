@@ -18,11 +18,13 @@ async function getMessagePage(req, res) {
   let membership = false;
   if (req.user) {
     membership = req.user.membership;
+    admin = req.user.admin;
   }
   console.log(messages.length);
   res.render("messages", {
     user: req.user,
     membershipStatus: membership,
+    adminStatus: admin,
     messages: messages,
   });
 }
@@ -30,3 +32,8 @@ module.exports = {
   createMessage,
   getMessagePage,
 };
+
+/*
+delete message route -> /messages/delete/:messageId: 
+
+*/

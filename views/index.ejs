@@ -6,8 +6,13 @@
     <body>
         
         <% if (locals.user) {%>
+            <% console.log(locals.user) %>
             <h1>WELCOME BACK <%= user.username %></h1>
-            <a href="/user/initiate">Join The Club</a>
+            <% if (!locals.user.membership){ %>
+            <a href="/user/initiate">Join The Club</a> <% } %>
+            <% if (!locals.user.admin && locals.user.membership){ %> 
+            <a href="/user/admininitiate"> Become an Admin!</a>
+            <% } %>
             <a href="/user/log-out">LOG OUT</a>
           <% } %>
         <h1>Hello, this is home</h1>
