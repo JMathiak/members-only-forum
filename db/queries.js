@@ -37,6 +37,13 @@ async function giveUserMembership(userID) {
   ]);
 }
 
+async function giveUserAdmin(userID) {
+  await pool.query(`UPDATE users SET admin = ($2) WHERE userid = ($1)`, [
+    userID,
+    true,
+  ]);
+}
+
 async function createMessage(title, message, authorid, authorUser) {
   await pool.query(
     `INSERT INTO messages (title, message, authorid, authorusername) VALUES ($1, $2, $3, $4)`,
@@ -56,4 +63,5 @@ module.exports = {
   giveUserMembership,
   createMessage,
   getMessages,
+  giveUserAdmin,
 };
