@@ -34,11 +34,12 @@
                         <%- message.authorusername %>
                             <% }else{ %> Anonymous <% } %></span>
                     <span><%- message.dateposted %></span>
+                    <% if (locals.adminStatus) {%> 
+                        <button>Delete</button>
+                            
+                            <% } %>
                 <% }) %>
-                <% if (locals.adminStatus) {%> 
-                <button>Delete</button>
-                    
-                    <% } %>
+              
                 <% } %>
         </div>
     </body>
