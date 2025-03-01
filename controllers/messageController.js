@@ -28,9 +28,16 @@ async function getMessagePage(req, res) {
     messages: messages,
   });
 }
+
+async function deleteMessage(req, res) {
+  let mID = req.params.id;
+  await db.deleteMessage(mID);
+  res.redirect("/messages");
+}
 module.exports = {
   createMessage,
   getMessagePage,
+  deleteMessage,
 };
 
 /*
