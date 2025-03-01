@@ -43,6 +43,14 @@ const validateSignup = [
     }),
 ];
 
+function loggedIn(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+}
+
 userRouter.get("/signup", (req, res) => {
   res.render("signUpForm");
 });
@@ -69,12 +77,12 @@ userRouter.get("/log-out", (req, res, next) => {
   });
 });
 
-userRouter.get("/initiate", (req, res) => {
+userRouter.get("/initiate", loggedIn, (req, res) => {
   res.render("initiate", { user: req.user });
 });
 userRouter.post("/initiate", userController.initiateMember);
 
-userRouter.get("/adminInitiate", (req, res) => {
+userRouter.get("/adminInitiate", loggedIn, (req, res) => {
   res.render("adminInitiate", { user: req.user });
 });
 userRouter.post("/adminInitiate", userController.initiateAdmin);
