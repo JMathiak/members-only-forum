@@ -16,11 +16,12 @@ async function getMessagePage(req, res) {
   let messages = await db.getMessages();
   console.log(messages);
   let membership = false;
+  let admin = false;
   if (req.user) {
     membership = req.user.membership;
     admin = req.user.admin;
   }
-  console.log(messages.length);
+  console.log(messages[0].dateposted.toUTCString().split(" "));
   res.render("messages", {
     user: req.user,
     membershipStatus: membership,
