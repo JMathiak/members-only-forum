@@ -1,16 +1,33 @@
 body{
    width: 100%;
 }
+
+.post-message-container{
+    justify-self: center;
+    border: 1px solid black;
+    padding: 10px;
+    width: 20%;
+}
+
+.post-message-button{
+    justify-self: end;
+}
+
+.message-field{
+   overflow: hidden;
+}
 .message{
     border: 1px solid black;
     width: 20%;
-    margin: 10px;
+    margin: 0px;
     padding: 10px;
 }
 
 .message-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .author{
@@ -19,4 +36,28 @@ body{
 
 .message-title{
     margin-bottom: 0;
+}
+
+.message-delete-container{
+    justify-self: end;
+    margin-bottom: 0px;
+    
+}
+
+.message-delete{
+    color: red;
+    background-color: lightgrey;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 10px 10px 10px 10px;
+}
+
+.message-delete:hover span{
+    display: none;
+    
+}
+
+.message-delete:hover:before{
+    content: "Delete";
 }
