@@ -4,14 +4,16 @@
         <link rel="stylesheet" href="./messages.css">
     </head>
     <body>
-        <div>
+        <header>
+            <h1>JoshBook</h1>
+        </header>
+        <div class="post-message-container">
             <h1>Post a message!</h1>
             <% if(locals.membershipStatus) {%> 
                 <form action="/messages/create" method="POST">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title" maxlength="30"> <br>
-                    <textarea name="message" id="message" cols="50" rows="6" maxlength="255"></textarea><br>
-                    <button>Post Message</button>
+                    <input type="text" name="title" id="title" maxlength="30" placeholder="Title..."> <br>
+                    <textarea class="message-field" cols="50" rows="3" message" id="message" rows="" maxlength="255" placeholder="Message..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea><br>
+                    <button class="post-message-button">Post Message</button>
                 </form>
                 <% }else{ %> 
                     <span>Please Become a Member to Post Messages</span>
@@ -22,15 +24,15 @@
                 <% messages.forEach((message) => {%> 
                     <div class="message">
                         <h1 class="message-title"> <%- message.title %></h1>
-                        <p class="author">Author:<% if (locals.membershipStatus) {%>
+                        <p class="author"><% if (locals.membershipStatus) {%>
                             <%- message.authorusername %>
-                                <% }else{ %> Anonymous <% } %></p>
+                                <% }else{ %> Anonymous <% } %> | <%-  message.dateposted.toDateString() %></p>
                         <p class="message-text"> <%- message.message %></p>
                         
-                        <p class="date-posted">Posted: <%-  message.dateposted.toDateString() %></p>
+                        
                         <% if (locals.adminStatus) {%>
-                            <form class="message-delete" action="/messages/delete/<%= message.messageid %>?_method=DELETE" method="POST">
-                                <button type="submit" onclick="return confirm('Are you sure you want to delete this message?')">Delete</button>
+                            <form class="message-delete-container" action="/messages/delete/<%= message.messageid %>?_method=DELETE" method="POST">
+                                <button class="message-delete" type="submit" onclick="return confirm('Are you sure you want to delete this message?')"><span>X</span></button>
                             </form>
                         
                                 <% } %>
